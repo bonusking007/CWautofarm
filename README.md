@@ -924,6 +924,7 @@ CombatSilentaimSection:Toggle({
             while wait() do
                 if Players.LocalPlayer.PlayerGui.RoactUI:FindFirstChild("BottomStatusIndicators") then
                     if val then
+                        wait(2)
                         local teleport_table = {
                             location1 = Vector3.new(47.35271453857422, 222.4220428466797, 91.63914489746094), -- your desired position
                         } 
