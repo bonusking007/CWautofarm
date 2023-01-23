@@ -922,29 +922,31 @@ CombatSilentaimSection:Toggle({
     function(val)
         for i,v2 in pairs(getgc(true)) do
             if val then
-                while wait(10) do
+                while task.wait(2) do
+					wait(3)
                     if Players.LocalPlayer.PlayerGui.RoactUI:FindFirstChild("BottomStatusIndicators") then
-                        local teleport_table = {
-                            location1 = Vector3.new(47.35271453857422, 222.4220428466797, 91.63914489746094), -- your desired position
-                        } 
-                        
-                        local tween_s = game:GetService('TweenService')
-                        local tweeninfo = TweenInfo.new(7,Enum.EasingStyle.Linear)
-                        
-                        local lp = game.Players.LocalPlayer
-                        
-                        function bypass_teleport(v)
-                            if lp.Character and 
-                            lp.Character:FindFirstChild('HumanoidRootPart') then
-                                local cf = CFrame.new(v)
-                                local a = tween_s:Create(lp.Character.HumanoidRootPart,tweeninfo,{CFrame=cf})
-                                a:Play()
-                                -- a.Completed:Wait()
-                                -- print('Teleporting Done!')
-                            end
-                        end
-                        
-                        bypass_teleport(teleport_table.location1)
+                        function TP(gotoCFrame)
+							pcall(function()
+								game.Players.LocalPlayer.Character.Humanoid.Sit = false
+							end)
+							if (game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart.Position - gotoCFrame.Position).Magnitude <= 100 then
+								pcall(function() 
+									tween:Cancel()
+								end)
+								game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart.CFrame = gotoCFrame
+							else
+								local tween_s = game:service"TweenService"
+								local info = TweenInfo.new((game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart.Position - gotoCFrame.Position).Magnitude/65, Enum.EasingStyle.Linear)
+								local tween, err = pcall(function()
+									tween = tween_s:Create(game.Players.LocalPlayer.Character["HumanoidRootPart"], info, {CFrame = gotoCFrame})
+									tween:Play()
+								end)
+								if not tween then return err end
+							end
+						end
+						
+						TP(CFrame.new(-1.8373456001281738, -80.436607360839844, 0.1529775857925415))
+						wait(3)
                     end
                 end
             end
@@ -1418,8 +1420,10 @@ task.spawn(function()
 
 
         if autospawn and Players.LocalPlayer.PlayerGui.RoactUI:FindFirstChild("MainMenu") then
-            keypress(0x20)
-            keyrelease(0x20)
+            while wait(1) do
+                keypress(0x20)
+                keyrelease(0x20)
+            end
         end
     
         -- really fuckin basic stomp aura but it works :shrug:
