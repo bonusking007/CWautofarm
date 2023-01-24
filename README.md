@@ -943,11 +943,11 @@ CombatSilentaimSection:Toggle({
 							end
 						end
 						
-						TP(CFrame.new(-1.8373456001281738, 80.436607360839844, 0.1529775857925415))
+						TP(CFrame.new(-1.8373456001281738, 150.436607360839844, 0.1529775857925415))
 						wait(7)
 						if Players.LocalPlayer.PlayerGui.RoactUI:FindFirstChild("BottomStatusIndicators") then
-                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1.8373456001281738, -40.436607360839844, 0.1529775857925415)
-							wait(7)
+                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1.8373456001281738, -80.436607360839844, 0.1529775857925415)
+							wait(8)
 						end
                     end
                 end
