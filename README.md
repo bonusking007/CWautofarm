@@ -921,7 +921,7 @@ CombatSilentaimSection:Toggle({
     function(val)
         for i,v2 in pairs(getgc(true)) do
             if val then
-                while task.wait(3) do
+                while task.wait(2) do
                     if Players.LocalPlayer.PlayerGui.RoactUI:FindFirstChild("BottomStatusIndicators") then
                         function TP(gotoCFrame)
 							pcall(function()
@@ -934,7 +934,7 @@ CombatSilentaimSection:Toggle({
 								game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart.CFrame = gotoCFrame
 							else
 								local tween_s = game:service"TweenService"
-								local info = TweenInfo.new((game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart.Position - gotoCFrame.Position).Magnitude/77, Enum.EasingStyle.Linear)
+								local info = TweenInfo.new((game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart.Position - gotoCFrame.Position).Magnitude/78.9, Enum.EasingStyle.Linear)
 								local tween, err = pcall(function()
 									tween = tween_s:Create(game.Players.LocalPlayer.Character["HumanoidRootPart"], info, {CFrame = gotoCFrame})
 									tween:Play()
@@ -943,12 +943,8 @@ CombatSilentaimSection:Toggle({
 							end
 						end
 						
-						TP(CFrame.new(-1.8373456001281738, 170.436607360839844, 0.1529775857925415))
+						TP(CFrame.new(-1.8373456001281738, -170.436607360839844, 0.1529775857925415))
 						wait(6)
-						if Players.LocalPlayer.PlayerGui.RoactUI:FindFirstChild("BottomStatusIndicators") then
-                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1.8373456001281738, -80.436607360839844, 0.1529775857925415)
-							wait(10)
-						end
                     end
                 end
             end
