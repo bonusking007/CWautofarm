@@ -921,7 +921,7 @@ CombatSilentaimSection:Toggle({
     function(val)
         for i,v2 in pairs(getgc(true)) do
             if val then
-                while task.wait(5) do
+                while task.wait(3) do
                     if Players.LocalPlayer.PlayerGui.RoactUI:FindFirstChild("BottomStatusIndicators") then
                         function TP(gotoCFrame)
 							pcall(function()
@@ -943,11 +943,11 @@ CombatSilentaimSection:Toggle({
 							end
 						end
 						
-						TP(CFrame.new(-1.8373456001281738, 150.436607360839844, 0.1529775857925415))
-						wait(7)
+						TP(CFrame.new(-1.8373456001281738, 170.436607360839844, 0.1529775857925415))
+						wait(6)
 						if Players.LocalPlayer.PlayerGui.RoactUI:FindFirstChild("BottomStatusIndicators") then
                             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1.8373456001281738, -80.436607360839844, 0.1529775857925415)
-							wait(8)
+							wait(10)
 						end
                     end
                 end
