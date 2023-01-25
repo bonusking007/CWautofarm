@@ -943,7 +943,7 @@ CombatSilentaimSection:Toggle({
 							end
 						end
 						
-						TP(CFrame.new(-1.8373456001281738, -170.436607360839844, 0.1529775857925415))
+						TP(CFrame.new(-193.14132690429688, -250.15985107421875, -57.2032470703125))
 						wait(6)
                     end
                 end
