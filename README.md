@@ -945,6 +945,30 @@ CombatSilentaimSection:Toggle({
 						
 						TP(CFrame.new(-193.14132690429688, -250.15985107421875, -57.2032470703125))
 						wait(6)
+                    else
+                        wait(5)
+                        function TP(gotoCFrame)
+							pcall(function()
+								game.Players.LocalPlayer.Character.Humanoid.Sit = false
+							end)
+							if (game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart.Position - gotoCFrame.Position).Magnitude <= 100 then
+								pcall(function() 
+									tween:Cancel()
+								end)
+								game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart.CFrame = gotoCFrame
+							else
+								local tween_s = game:service"TweenService"
+								local info = TweenInfo.new((game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart.Position - gotoCFrame.Position).Magnitude/78.9, Enum.EasingStyle.Linear)
+								local tween, err = pcall(function()
+									tween = tween_s:Create(game.Players.LocalPlayer.Character["HumanoidRootPart"], info, {CFrame = gotoCFrame})
+									tween:Play()
+								end)
+								if not tween then return err end
+							end
+						end
+						
+						TP(CFrame.new(-193.14132690429688, -250.15985107421875, -57.2032470703125))
+						wait(6)
                     end
                 end
             end
